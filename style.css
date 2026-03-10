@@ -1,0 +1,406 @@
+:root {
+    --bg-color: #f6f5f1;
+    --text-main: #1d1d1f;
+    --text-muted: #6e6e73;
+    --border-color: #e5e5e0;
+    --accent-color: #e0dcd0;
+    --skill-color: #46a0e6; 
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'PretendardStd', 'Pretendard', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    word-break: keep-all;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* Navigation */
+header {
+    position: fixed; top: 2rem; left: 50%; transform: translateX(-50%); z-index: 100;
+    background: rgba(246, 245, 241, 0.85); backdrop-filter: blur(12px);
+    padding: 1.2rem 4.5rem; border-radius: 100px; border: 1px solid var(--border-color);
+    display: flex; justify-content: center; align-items: center; gap: 4.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04); width: max-content; max-width: 95vw;
+}
+.logo { font-weight: 700; font-size: 1.35rem; }
+nav ul { display: flex; gap: 4.5rem; }
+
+nav a { 
+    font-size: 1.15rem; 
+    font-weight: 500; 
+    color: var(--text-muted); 
+    padding: 0.3rem 0; 
+    border-top: 2px solid transparent; 
+    border-bottom: 2px solid transparent; 
+    transition: all 0.3s ease; 
+}
+nav a:hover { color: var(--text-main); }
+nav a.active {
+    color: var(--text-main); 
+    font-weight: 700; 
+    border-top: 2px solid rgba(70, 160, 230, 1); 
+    border-bottom: 2px solid rgba(70, 160, 230, 1); 
+}
+
+/* Layout & Typography */
+.container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+section { padding: 7rem 0; }
+.section-header { margin-bottom: 4rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; }
+.section-title { font-size: 2.2rem; font-weight: 600; }
+.section-subtitle { color: var(--text-muted); font-size: 1.1rem; }
+
+/* ==========================================================================
+   Hero Section 
+   ========================================================================== */
+.hero { 
+    min-height: 90vh; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding-top: 8rem; 
+    position: relative; 
+    width: 100%;
+}
+
+.star-ripple-container { position: absolute; top: 50%; left: 40%; transform: translate(-50%, -50%); width: 220px; height: 220px; z-index: 0; pointer-events: none; }
+
+.star {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="33.4,10 66.6,10 90,33.4 90,66.6 66.6,90 33.4,90 10,66.6 10,33.4" fill="rgba(135,206,250,0.45)" stroke="rgba(135,206,250,0.45)" stroke-width="12" stroke-linejoin="round"/></svg>');
+    background-size: contain; background-repeat: no-repeat; background-position: center;
+    opacity: 0; animation: starSpreading 6s ease-out infinite; 
+}
+.star:nth-child(1) { animation-delay: 0s; }
+.star:nth-child(2) { animation-delay: 2s; }
+.star:nth-child(3) { animation-delay: 4s; }
+
+@keyframes starSpreading {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    100% { transform: scale(3.5); opacity: 0; }
+}
+
+.hero-image-wrap {
+    width: 45%; 
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-start; 
+    padding-left: 0; 
+}
+
+.image-frame {
+    position: relative;
+    width: 100%; 
+    max-width: 480px; 
+    height: 640px; 
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    border-radius: 240px 240px 30px 30px; 
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06), inset 0 0 20px rgba(255,255,255,0.4); 
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+    overflow: hidden; 
+}
+
+.hero-profile-img {
+    width: 90%; 
+    height: auto;
+    max-height: 95%; 
+    object-fit: contain;
+    filter: drop-shadow(0 -10px 20px rgba(0,0,0,0.08)); 
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.image-frame:hover .hero-profile-img {
+    transform: scale(1.03) translateY(-5px); 
+}
+
+.hero-text-wrap {
+    width: 55%; 
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    padding-left: 8rem; 
+}
+
+.hero h1 { 
+    font-size: clamp(2.4rem, 4vw, 4.2rem); 
+    font-weight: 600; 
+    line-height: 1.45; 
+    margin-bottom: 2rem; 
+    max-width: 100%; 
+    position: relative; 
+    z-index: 1; 
+    letter-spacing: -1px; 
+    min-height: 1.5em;
+}
+
+/* 🔥 타자기 영역이 비어있어도 3번째 줄 공간을 꽉 잡아주어 위로 튕기는 현상(Layout Shift) 원천 차단! */
+#typing-container::before {
+    content: "\200B"; /* 화면에 보이지 않는 0픽셀 두께의 빈 공간 추가 */
+}
+
+.hero-subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 650px; margin-bottom: 4rem; position: relative; z-index: 1;}
+
+.highlight-blue { color: #2b5c8f; }
+.highlight-green { color: #2e7d32; }
+.text-big { font-weight: 700; }
+.text-small { font-size: 0.65em; color: var(--text-muted); font-weight: 400; vertical-align: middle; }
+.colored-name { color: #1a3c5e; font-weight: 700; }
+
+/* 하단 인사말 박스 유기적 프레임 디자인 (A 디자인) 적용 */
+.hero-greeting-box {
+    position: absolute;
+    bottom: 3rem; 
+    left: 0;
+    right: 0;
+    margin: 0 auto; 
+    border-radius: 80% 20% 70% 30% / 30% 70% 20% 80%; 
+    background: rgba(135, 206, 250, 0.3); 
+    backdrop-filter: blur(16px);
+    border: 2px solid rgba(70, 160, 230, 0.6);
+    box-shadow: 0 0 25px rgba(70, 160, 230, 0.4), inset 0 0 15px rgba(70, 160, 230, 0.2); 
+    padding: 2.5rem 3.5rem; 
+    z-index: 10;
+    width: max-content; 
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.hero-greeting-box p {
+    font-size: 1.15rem;
+    font-weight: 600; 
+    color: #2e7d32; /* 🔥 수정 완료: 가독성을 높인 고급스러운 초록색 유지 */
+    letter-spacing: -0.5px;
+    margin: 0;
+    line-height: 1.6; 
+}
+
+/* 호버 시 형태가 미세하게 요동치는 효과 */
+.hero-greeting-box:hover {
+    transform: scale(1.03) translateY(-3px); 
+}
+
+
+/* Profile Section */
+.profile-content { display: grid; grid-template-columns: 350px 1fr; gap: 5rem; background: #fff; padding: 4.5rem; border-radius: 20px; border: 1px solid var(--border-color); width: 100%; }
+.profile-image { background: linear-gradient(135deg, #eef2f5 0%, #e0e8ed 100%); border-radius: 16px; min-height: 400px; display: flex; justify-content: center; align-items: flex-end; overflow: hidden; }
+.inner-profile-pic { width: 95%; height: auto; max-height: 100%; object-fit: contain; filter: drop-shadow(0 -5px 15px rgba(0,0,0,0.08)); }
+.profile-details { display: flex; flex-direction: column; justify-content: center; gap: 1.8rem; font-size: 1.3rem; }
+.info-group p { margin-bottom: 1.2rem; }
+.info-group strong { display: inline-block; width: 130px; color: var(--text-muted); font-weight: 500; }
+.profile-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem; }
+.tag { background-color: var(--bg-color); padding: 0.6rem 1.2rem; border-radius: 30px; font-size: 1rem; border: 1px solid var(--border-color); }
+
+/* Career Section */
+.career-list { display: flex; flex-direction: column; gap: 2rem; }
+.career-item { display: flex; gap: 9rem; background: #fff; padding: 3rem; border-radius: 20px; border: 1px solid var(--border-color); transition: transform 0.3s, box-shadow 0.3s; }
+.career-item:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+
+.career-period { 
+    min-width: 270px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start; 
+    gap: 3.5rem; 
+    padding-top: 1rem; 
+}
+
+.career-period span { 
+    font-weight: 600; 
+    color: var(--text-muted); 
+    font-size: 1.15rem; 
+    line-height: 1.4; 
+    text-align: center; 
+    white-space: nowrap; 
+}
+
+/* 학사모 섹션 텍스트 미세 보정 유지 */
+.career-item:nth-child(3) .career-period span {
+    transform: translateX(12px); 
+}
+
+.career-3d-icon { 
+    width: 115px; 
+    height: 115px; 
+    object-fit: contain; 
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.12)); 
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+    margin-bottom: 2rem; 
+}
+
+/* 서류가방 보정 유지 */
+.career-item:nth-child(2) .career-3d-icon {
+    margin-top: -15px;
+    margin-bottom: 3.5rem; 
+}
+
+/* 학사모 보정 유지 */
+.career-item:nth-child(3) .career-3d-icon {
+    width: 145px;
+    height: 145px;
+    margin-top: 10px; 
+    margin-bottom: 2rem;
+}
+
+.career-item:hover .career-3d-icon { transform: scale(1.1) translateY(-10px); }
+
+.career-details { flex-grow: 1; padding-left: 4rem; }
+.career-details h3 { font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: 600; color: var(--text-main); }
+.career-desc-list { list-style: none; padding: 0; }
+.career-desc-list li { margin-bottom: 1rem; color: var(--text-muted); position: relative; padding-left: 1.2rem; line-height: 1.6; }
+.career-desc-list li::before { content: '•'; position: absolute; left: 0; color: var(--text-main); font-weight: bold; }
+.career-desc-list li strong { color: var(--text-main); font-weight: 600; }
+
+/* Skills Section */
+.skills-grid { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 4rem 2rem; 
+    margin-top: 2rem;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.circular-progress {
+    position: relative;
+    width: 140px; 
+    height: 140px;
+    margin-bottom: 1.5rem;
+}
+
+.circular-progress svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg); 
+}
+
+.bg-circle {
+    fill: none;
+    stroke: var(--border-color);
+    stroke-width: 6;
+}
+
+.progress-circle {
+    fill: none;
+    stroke: var(--skill-color); 
+    stroke-width: 6;
+    stroke-linecap: round; 
+    transition: stroke-dashoffset 1.5s ease-out; 
+}
+
+.skill-percent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.skill-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* Projects Section */
+.work-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; }
+.work-card { background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); transition: transform 0.4s; }
+.work-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+.work-img { width: 100%; height: 450px; background-color: var(--accent-color); }
+.work-info { padding: 3rem; }
+.project-specs { border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 1.5rem 0; margin: 1.5rem 0 2rem; display: grid; gap: 0.8rem; }
+.btn-primary { display: inline-block; background: var(--text-main); color: #fff; padding: 0.9rem 2rem; border-radius: 50px; transition: 0.3s; }
+.btn-primary:hover { transform: translateY(-2px); }
+
+/* Footer */
+footer { padding: 5rem 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-muted); }
+
+/* GSAP */
+.gsap-reveal { opacity: 0; transform: translateY(40px); }
+
+/* Side Navigation */
+#side-nav {
+    position: fixed; top: 50%; right: 4.5rem; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 1.2rem; z-index: 100;
+}
+
+.side-star {
+    width: 18px; height: 18px;
+    background-color: rgba(135, 206, 250, 0.4); 
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    transition: transform 0.3s, background-color 0.3s;
+    cursor: pointer;
+}
+
+.side-star:hover { transform: scale(1.2); background-color: rgba(135, 206, 250, 0.8); }
+.side-star.active { transform: scale(1.4); background-color: rgba(70, 160, 230, 1); }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    header { width: 90%; padding: 1rem 2rem; gap: 1.5rem; }
+    nav { display: none; }
+    #side-nav { display: none; }
+    .container { padding: 0 1.5rem; }
+    
+    .hero { flex-direction: column; padding-top: 8rem; text-align: center; justify-content: center; }
+    .hero-image-wrap { width: 100%; justify-content: center; margin-bottom: 3rem; padding-left: 0; }
+    
+    .image-frame { width: 320px; height: 430px; }
+    .hero-profile-img { width: 85%; }
+
+    .hero-text-wrap { width: 100%; text-align: center; padding-left: 0; }
+    .hero h1 { line-height: 1.4; font-size: clamp(2rem, 6vw, 2.5rem); } 
+    
+    /* 모바일 인사말 박스 조정 */
+    .hero-greeting-box {
+        width: 90%;
+        padding: 1.5rem;
+        bottom: 2rem;
+        border-radius: 20px;
+    }
+    .hero-greeting-box p { font-size: 0.95rem; line-height: 1.5; }
+
+    .star-ripple-container { width: 150px; height: 150px; left: 50%; }
+    @keyframes starSpreading {
+        0% { transform: scale(0.8); opacity: 0.6; }
+        100% { transform: scale(2.5); opacity: 0; }
+    }
+
+    .profile-content { grid-template-columns: 1fr; padding: 2.5rem; gap: 2rem; }
+    .profile-image { min-height: 250px; }
+    .profile-details { font-size: 1.1rem; gap: 1.2rem; }
+    .info-group p { margin-bottom: 0.8rem; }
+    .info-group strong { width: 90px; }
+    
+    .career-item { flex-direction: column; gap: 1rem; padding: 2rem; }
+    .career-period { min-width: auto; flex-direction: column; align-items: flex-start; gap: 2.5rem; border-bottom: 2px solid var(--border-color); padding-bottom: 2rem; margin-bottom: 1rem; }
+    
+    .career-item:nth-child(3) .career-period span { transform: none; }
+    .career-period span { text-align: left; max-width: 100%; white-space: normal; } 
+    
+    .career-3d-icon { width: 85px; height: 85px; margin-top: 1rem; margin-bottom: 0; }
+    .career-item:nth-child(3) .career-3d-icon { width: 110px; height: 110px; margin-top: 0; }
+    
+    .career-details { padding-left: 0; }
+    .career-details h3 { margin-bottom: 1rem; font-size: 1.3rem; }
+
+    .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem 1rem; }
+}

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>진주형 - Portfolio</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/pretendard-std@1.3.9/subset.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">진주형</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#career">Career</a></li>
+                <li><a href="#experience">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav id="side-nav">
+        <a href="#about" class="side-star active" title="About Me"></a>
+        <a href="#profile" class="side-star" title="Profile"></a>
+        <a href="#career" class="side-star" title="Career"></a>
+        <a href="#experience" class="side-star" title="Skills"></a>
+        <a href="#projects" class="side-star" title="Projects"></a>
+    </nav>
+
+    <main class="container">
+        
+        <section id="about" class="hero">
+            <div class="star-ripple-container">
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+            </div>
+
+            <div class="hero-image-wrap gsap-reveal">
+                <div class="image-frame">
+                    <img src="me.png" alt="기획자 진주형" class="hero-profile-img">
+                </div>
+            </div>
+
+            <div class="hero-text-wrap gsap-reveal">
+                <h1 class="main-title">
+                    <span class="text-big highlight-blue">브랜드의 가치</span><span class="text-small">를</span><br>
+                    <span style="white-space: nowrap;"><span class="text-big highlight-green">매력적인 스토리</span><span class="text-small">로 만드는</span></span><br>
+                    <span id="typing-container"></span>
+                </h1>
+            </div>
+
+            <div class="hero-greeting-box gsap-reveal">
+                <p>"브랜드의 고유한 가치를 발굴하고, 소비자의 기억에 깊은 여운을 남기는 스토리로 기획하여 대체 불가능한 매력으로 만들겠습니다."</p>
+            </div>
+        </section>
+
+        <section id="profile">
+            <div class="section-header gsap-reveal">
+                <h2 class="section-title">Profile</h2>
+                <span class="section-subtitle">자기소개</span>
+            </div>
+            
+            <div class="profile-content gsap-reveal">
+                <div class="profile-image">
+                    <img src="I.png" alt="진주형 프로필 사진" class="inner-profile-pic">
+                </div>
+                
+                <div class="profile-details">
+                    <div class="info-group">
+                        <p><strong>이름</strong> 진주형</p>
+                        <p><strong>생년월일</strong> 2001.03.18</p>
+                        <p><strong>연락처</strong> 010-3063-8017 | jhjin0318@naver.com</p>
+                        <p><strong>거주지</strong> 경기도 덕양구</p>
+                        <p><strong>학력</strong> 대진대학교</p>
+                        <p><strong>전공</strong> 미디어커뮤니케이션학과</p>
+                    </div>
+                    
+                    <div class="profile-tags">
+                        <span class="tag">#창의적인_기획</span>
+                        <span class="tag">#논리적인_스토리텔러</span>
+                        <span class="tag">#원활한_커뮤니케이션</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="career">
+            <div class="section-header gsap-reveal">
+                <h2 class="section-title">Career & Activities</h2>
+                <span class="section-subtitle">경력 및 주요 활동</span>
+            </div>
+            
+            <div class="career-list">
+                <div class="career-item gsap-reveal">
+                    <div class="career-period">
+                        <span>Activities & Awards</span>
+                        <img src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Trophy/3D/trophy_3d.png" alt="트로피" class="career-3d-icon">
+                    </div>
+                    <div class="career-details">
+                        <h3>대외활동 및 수상내역</h3> 
+                        <ul class="career-desc-list">
+                            <li>미래대학 투모로우 솔루션 <strong>대상 수상</strong> ('레벨업' 팀 참여)</li>
+                            <li>제 3회 노상치킨 영상 콘테스트 <strong>장려상 수상</strong></li>
+                            <li>KPC 한국생산성본부 미래 직업 크리에이트 프로젝트 ('힐링독' 팀 참여)</li> 
+                            <li>유페이퍼 전자책 <strong>'진화하는 미디어와 성장하는 알파세대'</strong> 제작 참여</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="career-item gsap-reveal">
+                    <div class="career-period">
+                        <span>Work Experience</span>
+                        <img src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Briefcase/3D/briefcase_3d.png" alt="서류가방" class="career-3d-icon">
+                    </div>
+                    <div class="career-details">
+                        <h3>실무 및 기타 경험</h3>
+                        <ul class="career-desc-list">
+                            <li>중식 레스토랑 야래향 매니저 (1년 근무)</li>
+                            <li>단기 아르바이트 (서적 관리, 식당 서비스 응대, 공공기관 동사무소 업무 지원 등)</li>
+                            <li>제11항공단 병장 만기 전역</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="career-item gsap-reveal">
+                    <div class="career-period">
+                        <span>Education & Certifications</span>
+                        <img src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Graduation%20cap/3D/graduation_cap_3d.png" alt="학사모" class="career-3d-icon">
+                    </div>
+                    <div class="career-details">
+                        <h3>학력 및 자격 사항</h3>
+                        <ul class="career-desc-list">
+                            <li>대진대학교 미디어커뮤니케이션학과 졸업</li>
+                            <li>신도고등학교 졸업</li>
+                            <li>GTQ 1급</li>
+                            <li>ITQ A등급(아래한글, 한글엑셀, 한글파워포인트)</li>
+                            <li>한국사능력검정시험 2급</li>
+                            <li>자동차운전면허증 1종보통</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="section-header gsap-reveal">
+                <h2 class="section-title">My Skills</h2>
+                <span class="section-subtitle">내 기술과 역량</span>
+            </div>
+            
+            <div class="skills-grid gsap-reveal">
+                
+                <div class="skill-item">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="90"></circle>
+                        </svg>
+                        <div class="skill-percent">0%</div>
+                    </div>
+                    <p class="skill-name">Premiere Pro</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="80"></circle>
+                        </svg>
+                        <div class="skill-percent">0%</div>
+                    </div>
+                    <p class="skill-name">After Effects</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="85"></circle>
+                        </svg>
+                        <div class="skill-percent">0%</div>
+                    </div>
+                    <p class="skill-name">Figma</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="90"></circle>
+                        </svg>
+                        <div class="skill-percent">0%</div>
+                    </div>
+                    <p class="skill-name">Photoshop</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="75"></circle>
+                        </svg>
+                        <div class="skill-percent">0%</div>
+                    </div>
+                    <p class="skill-name">Illustrator</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="70"></circle>
+                        </svg>
+                        <div class="skill-percent">0%</div>
+                    </div>
+                    <p class="skill-name">HTML / CSS</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="95"></circle>
+                        </svg>
+                        <div class="skill-percent">0%</div>
+                    </div>
+                    <p class="skill-name">MS Office</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="283" data-target="80"></circle>
+                        </svg>
+                        <div class="skill-percent">0%</div>
+                    </div>
+                    <p class="skill-name">Marketing Plan</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-header gsap-reveal">
+                <h2 class="section-title">Projects</h2>
+                <span class="section-subtitle">진행한 프로젝트</span>
+            </div>
+            
+            <div class="work-grid">
+                <div class="work-card gsap-reveal">
+                    <div class="work-img"></div> 
+                    <div class="work-info">
+                        <h3>[프로젝트명]</h3>
+                        <p class="work-desc">[설명]</p>
+                        <a href="#" class="btn-primary">기획서 보러가기 →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <p>진주형</p>
+            <p style="font-size: 0.95rem; margin-top: 0.75rem;">jhjin0318@naver.com | 010-3063-8017</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
