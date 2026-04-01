@@ -3,6 +3,36 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 document.addEventListener("DOMContentLoaded", () => {
     
+    // ==========================================================================
+    // 🔥 [고퀄리티 다크 모드 / 라이트 모드] 토글 로직 시스템
+    // ==========================================================================
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // 사용자의 기존 테마 선택 기억 (LocalStorage 확인)
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+        body.setAttribute('data-theme', 'dark');
+        // CSS에서 data-theme="dark" 일 때 sun-icon이 보이도록 디자인 완료됨.
+    } else {
+        // CSS에서 data-theme="light" (기본) 일 때 moon-icon이 보이도록 디자인 완료됨.
+    }
+
+    // 버튼 클릭 이벤트 로직
+    themeToggleBtn.addEventListener('click', () => {
+        // 현재 다크모드라면 -> 라이트모드로 개편
+        if (body.getAttribute('data-theme') === 'dark') {
+            body.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+        } 
+        // 현재 라이트모드라면 -> 다크모드로 개편
+        else {
+            body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+
+
     // 1. 기존 페이드업(Fade-up) 애니메이션
     const revealElements = document.querySelectorAll(".gsap-reveal");
     revealElements.forEach((el) => {
@@ -55,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ==========================================================================
-    // 3. "기획자 진주형 입니다." 타자기 애니메이션 (기존 유지)
+    // 3. "기획자 진주형 입니다." 타자기 애니메이션
     // ==========================================================================
     const typingContainer = document.getElementById("typing-container");
     
@@ -95,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================================================
-    // 4. 스킬 원형 그래프 애니메이션 (0부터 차오르기) (기존 유지)
+    // 4. 스킬 원형 그래프 애니메이션
     // ==========================================================================
     const skillItems = document.querySelectorAll('.skill-item');
     
@@ -131,20 +161,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+});
+document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
-    // 🔥 5. 하단 인사말 박스 유기적 맥동 애니메이션 (과하지 않게)
+    // 🔥 다크모드/라이트모드 토글 (무조건 라이트모드로 시작)
     // ==========================================================================
-    const greetingBox = document.querySelector('.hero-greeting-box');
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
 
-    if (greetingBox) {
-        // 테두리 네온 광택 맥동 (box-shadow)
-        gsap.to(greetingBox, {
-            boxShadow: '0 0 35px rgba(70, 160, 230, 0.6), inset 0 0 20px rgba(70, 160, 230, 0.4)',
-            duration: 3, // 3초 동안 천천히
-            yoyo: true, // 갔다가 다시 옴 (맥동)
-            repeat: -1, // 무한 반복
-            ease: "power1.inOut" // 부드럽게
+    // 1. 페이지가 로드될 때 브라우저에 저장된 다크모드 기억을 강제로 삭제!
+    localStorage.removeItem('theme'); 
+    
+    // 2. 무조건 기본(라이트) 모드로 속성 초기화
+    htmlElement.removeAttribute('data-theme');
+
+    // 3. 버튼 클릭 시에만 모드 변경 작동
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            if (htmlElement.getAttribute('data-theme') === 'dark') {
+                htmlElement.removeAttribute('data-theme'); // 라이트 모드로
+            } else {
+                htmlElement.setAttribute('data-theme', 'dark'); // 다크 모드로
+            }
         });
     }
 
+    // ... (이 아래로는 기존에 있던 GSAP 스크롤 애니메이션 등의 코드를 그대로 두시면 됩니다!) ...
 });
